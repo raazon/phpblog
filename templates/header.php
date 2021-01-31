@@ -29,7 +29,19 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
+                    <?php
+                    $query = "SELECT * FROM `menus`";
+                    $get_all_menus = mysqli_query($connection, $query);
+                    
+                    while ($menus = mysqli_fetch_assoc($get_all_menus)) :  ?>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><?php echo $menus['name']; ?></a>
+                        </li>
+
+                    <?php endwhile; ?>
+
+                    <!-- <li class="nav-item active">
                         <a class="nav-link" href="#">Home
                             <span class="sr-only">(current)</span>
                         </a>
@@ -42,7 +54,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>
